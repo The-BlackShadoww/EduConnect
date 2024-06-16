@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-const CURRENCY = "inr";
+const CURRENCY = "usd";
 import { formatAmountForStripe } from "@/lib/stripe-helpers";
 import { stripe } from "@/lib/stripe";
 
@@ -14,7 +14,7 @@ export async function createCheckoutSession(data) {
 
     const course = await getCourseDetails(courseId);
 
-    if (!course)  return new Error(`Course not found`);
+    if (!course) return new Error(`Course not found`);
 
     const courseName = course?.title;
     const coursePrice = course?.price;
